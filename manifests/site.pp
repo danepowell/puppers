@@ -68,3 +68,12 @@ package { 'ffi':
   provider => gem,
   require => Package['ruby-dev'],
 }
+
+class { 'composer':
+  command_name => 'composer',
+  target_dir   => '/usr/local/bin'
+}
+
+exec { 'drush-install':
+  command => '/usr/local/bin/composer global require drush/drush:6.*'
+}
