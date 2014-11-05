@@ -77,3 +77,7 @@ class { 'composer':
 exec { 'drush-install':
   command => '/usr/local/bin/composer global require drush/drush:6.*'
 }
+
+package { 'php5-fpm'
+  ensure => installed,
+}
