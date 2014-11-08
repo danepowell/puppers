@@ -11,13 +11,8 @@ service { 'apache2':
   ensure => running,
 }
 
-package { 'mysql-server':
-  require => Exec['apt-update'],        # require 'apt-update' before installing
-  ensure => installed,
-}
-
-service { 'mysql':
-  ensure => running,
+class { '::mysql::server':
+  override_options => { 'mysqld' => { 'max_allowed_packet' => '164M', 'collation-server' => 'utf8_general_ci', 'init-connect' => 'SET NAMES utf8', 'character-set-server' => 'utf8', 'innodb_flush_log_at_trx_commit' => '2'}, 'client' => {'default-character-set' => 'utf8'}, 'mysql' => {'default-character-set' => 'utf8'}}
 }
 
 package { 'php5':
