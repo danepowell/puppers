@@ -77,3 +77,10 @@ package { 'emacs':
   ensure => installed,
 }
 
+package { 'auto-complete-el':
+  ensure => installed,
+}
+
+package { 'php-elisp':
+  ensure => installed,
+}
