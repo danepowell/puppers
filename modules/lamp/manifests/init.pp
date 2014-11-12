@@ -17,6 +17,8 @@ class lamp {
     source => 'puppet:///modules/lamp/php5-fpm.conf',
     require => Package['apache2'],
   }
+  exec { 'a2enmod': command => '/usr/sbin/a2enmod actions fastcgi rewrite', require => Package['apache2']}
+  exec { 'a2enconf': command => '/usr/sbin/a2enconf php5-fpm.conf', require => File['/etc/apache2/conf-available/php5-fpm.conf']}
 
   # MySQL
   class { '::mysql::server':
