@@ -72,3 +72,8 @@ class { 'composer':
 package { 'php5-fpm':
   ensure => installed,
 }
+
+package { 'emacs':
+  ensure => installed,
+}
+
