@@ -11,6 +11,7 @@ class lamp {
   package { 'apache2': }
   package { 'libapache2-mod-fastcgi': }
   service { 'apache2':
+    require => Package['apache2'],
     ensure => running,
   }
   file { '/etc/apache2/conf-available/php5-fpm.conf' :
@@ -38,6 +39,7 @@ class lamp {
   # Memcached
   package { 'memcached': }
   service { 'memcached':
+    require => Package['memcached'],
     ensure => running,
   }
   package { 'php5-memcached': }

@@ -1,4 +1,5 @@
 include apt
+include git
 
 # Make sure all packages get installed.
 Package {
@@ -37,3 +38,11 @@ class { 'composer':
 package { 'emacs':}
 package { 'auto-complete-el':}
 package { 'php-elisp':}
+
+git::config { 'user.name':
+  value => 'Dane Powell',
+}
+
+git::config { 'user.email':
+  value => 'git@danepowell.com',
+}
