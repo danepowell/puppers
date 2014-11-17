@@ -28,6 +28,14 @@ class lamp {
   # PHP
   class { ['php::fpm', 'php::cli', 'php::extension::memcached', 'php::extension::xdebug']:
   }
+  php::fpm::config { 'xdebug-config':
+    file => '/etc/php5/mods-available/xdebug.ini',
+    config => [
+      'set .anon/xdebug.remote_enable true',
+      'set .anon/xdebug.max_nesting_level 200',
+    ]
+  }
+
   package { 'php5-dev': }
   # ensure info.php file exists
   file { '/var/www/html/info.php':
