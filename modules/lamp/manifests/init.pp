@@ -1,10 +1,9 @@
 class lamp {
-  include apt
+  include php
 
   # Make sure all packages get installed.
   Package {
     ensure => 'installed',
-    require => Exec['apt-update'],
   }
 
   # Apache
@@ -27,8 +26,9 @@ class lamp {
   }
 
   # PHP
-  package { 'php5': }
-  package { 'php5-fpm': }
+  class { ['php::fpm', 'php::cli', 'php::extension::memcached', 'php::extension::xdebug']:
+  }
+  package { 'php5-dev': }
   # ensure info.php file exists
   file { '/var/www/html/info.php':
     ensure => file,
@@ -42,6 +42,5 @@ class lamp {
     require => Package['memcached'],
     ensure => running,
   }
-  package { 'php5-memcached': }
 
 }

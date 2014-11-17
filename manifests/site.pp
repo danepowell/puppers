@@ -1,10 +1,8 @@
-include apt
 include git
 
 # Make sure all packages get installed.
 Package {
   ensure => 'installed',
-  require => Exec['apt-update'],
 }
 
 # LAMP stack
