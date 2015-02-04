@@ -38,6 +38,7 @@ class lamp {
 
   package { 'php5-dev': }
   package { 'php5-curl': }
+  package { 'php5-mysql': }
   # ensure info.php file exists
   file { '/var/www/html/info.php':
     ensure => file,
