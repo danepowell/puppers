@@ -47,3 +47,6 @@ git::config { 'user.email':
 
 package { 'xclip':
 }
+
+package { 'imagemagick':
+}
