@@ -35,6 +35,12 @@ class lamp {
       'set .anon/xdebug.max_nesting_level 200',
     ]
   }
+  php::fpm::config { 'opcache-config':
+    file => '/etc/php5/mods-available/opcache.ini',
+    config => [
+      'set .anon/opcache.memory_consumption 128',
+    ]
+  }
 
   package { 'php5-dev': }
   package { 'php5-curl': }
