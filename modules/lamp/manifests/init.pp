@@ -26,7 +26,7 @@ class lamp {
   }
 
   # PHP
-  class { ['php::fpm', 'php::cli', 'php::extension::memcached', 'php::extension::xdebug']:
+  class { ['php::fpm', 'php::cli', 'php::extension::xdebug']:
   }
   php::fpm::config { 'xdebug-config':
     file => '/etc/php5/mods-available/xdebug.ini',
@@ -50,13 +50,6 @@ class lamp {
     ensure => file,
     content => '<?php  phpinfo(); ?>',    # phpinfo code
     require => Package['apache2'],        # require 'apache2' package before creating
-  }
-
-  # Memcached
-  package { 'memcached': }
-  service { 'memcached':
-    require => Package['memcached'],
-    ensure => running,
   }
 
 }
