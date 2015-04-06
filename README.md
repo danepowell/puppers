@@ -16,3 +16,7 @@ Usage:
 `sudo puppet module install nodes/php`
 
 `sudo puppet apply --modulepath /etc/puppet/modules:./modules manifests/site.pp`
+
+If you encounter errors after the first install, make sure modules are up to date:
+
+`sudo puppet module upgrade puppetlabs-apt`
