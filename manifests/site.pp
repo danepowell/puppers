@@ -10,22 +10,8 @@ class { 'lamp': }
 
 # Requirements for AHT
 package { 'expect': }
-package { 'openjdk-7-jre':}
-package { 'openjdk-7-jdk':}
-
-package { 'bundler':
-  provider => gem,
-}
-
-# required by ffi gem
-package { 'ruby-dev':
-}
-
-# required for bacon
-package { 'ffi':
-  provider => gem,
-  require => Package['ruby-dev'],
-}
+package { 'openjdk-8-jre':}
+package { 'openjdk-8-jdk':}
 
 class { 'composer':
   command_name => 'composer',
@@ -46,7 +32,4 @@ git::config { 'user.email':
 }
 
 package { 'xclip':
-}
-
-package { 'imagemagick':
 }
