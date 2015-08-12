@@ -22,7 +22,9 @@ class { 'composer':
 package { 'emacs':}
 package { 'auto-complete-el':}
 package { 'php-elisp':}
+package { 'yaml-mode':}
 
+# git
 git::config { 'user.name':
   value => 'Dane Powell',
 }
@@ -30,6 +32,8 @@ git::config { 'user.name':
 git::config { 'user.email':
   value => 'git@danepowell.com',
 }
+
+package { 'tig':}
 
 package { 'xclip':
 }
